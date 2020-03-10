@@ -16,6 +16,7 @@
     "etag": "^1.8.1",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
+    "google-auth-library": "^5.10.1",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
@@ -50,10 +51,10 @@
     "nyc": "^14.1.1"
   },
   "scripts": {
-    "migrate": "SET DB=my_ride&&SET DB_USER=root&&SET DB_PASS=kevinkimaru",
+    "migrate": "SET DB=my_ride&&SET DB_USER=root&&SET DB_PASS=kevinkimaru&&sequelize db:migrate",
     "initialize": "npx babel-node ./src/main/initialize.js",
     "start": "node ./build/main/index.js",
-    "dev": "nodemon --exec babel-node ./src/main/index.js",
+    "dev": "SET DB=my_ride&&SET DB_USER=root&&SET DB_PASS=kevinkimaru&&nodemon --exec babel-node ./src/main/index.js",
     "test": "nyc --require @babel/register  mocha ./src/test/index.js --timeout 120000 --exit",
     "build": "rm -rf ./build && babel -d ./build ./src -s",
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",

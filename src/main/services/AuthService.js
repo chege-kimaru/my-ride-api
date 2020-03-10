@@ -11,10 +11,15 @@ import Logger from '../utils/logger';
 import jwt from 'jsonwebtoken';
 import uuid from 'uuid/v4';
 import moment from 'moment';
+import {OAuth2Client} from "google-auth-library";
 
 const logger = new Logger().logger();
 
 export default class AuthService {
+    static findByPk(id) {
+        return Account.findByPk(id);
+    };
+
     static async createUserGoogle(data) {
         try {
             let password = Math.random().toString(36).slice(-8);

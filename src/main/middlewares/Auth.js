@@ -9,7 +9,6 @@ export default function Auth(req, res, next) {
         if (err) return Send.error(res, new AuthorizationError('Auth: You are not authorized'));
         try {
             const u = await AuthService.findByPk(decoded.id);
-            if (!u.verified) return Send.error(res, new ForbiddenError('Please verify this account.'));
             req.user = u;
             return next();
         } catch (error) {
