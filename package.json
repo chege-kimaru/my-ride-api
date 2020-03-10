@@ -1,0 +1,80 @@
+{
+  "name": "node-api-starter-es6",
+  "version": "1.0.0",
+  "description": "Node api boilerplate with es6",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/runtime": "^7.7.2",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cloudinary": "^1.16.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "email-templates": "^6.0.3",
+    "etag": "^1.8.1",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^2.2.1",
+    "mysql2": "^2.0.1",
+    "node-input-validator": "^4.1.0",
+    "nodemailer": "^6.3.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.21.2",
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "@babel/runtime": "^7.7.2",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "codeclimate-test-reporter": "^0.5.1",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
+  },
+  "scripts": {
+    "migrate": "SET DB=my_ride&&SET DB_USER=root&&SET DB_PASS=kevinkimaru",
+    "initialize": "npx babel-node ./src/main/initialize.js",
+    "start": "node ./build/main/index.js",
+    "dev": "nodemon --exec babel-node ./src/main/index.js",
+    "test": "nyc --require @babel/register  mocha ./src/test/index.js --timeout 120000 --exit",
+    "build": "rm -rf ./build && babel -d ./build ./src -s",
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
+    "coverage": "npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chege-kimaru/node-api-starter-es6.git"
+  },
+  "keywords": [
+    "node",
+    "starter",
+    "boilerplate",
+    "es6"
+  ],
+  "author": "Kevin Kimaru Chege",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chege-kimaru/node-api-starter-es6/issues"
+  },
+  "homepage": "https://github.com/chege-kimaru/node-api-starter-es6#readme"
+}

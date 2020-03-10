@@ -1,0 +1,14 @@
+.env
+
+.idea
+
+.nyc_output
+
+build
+
+node_modules
+
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
