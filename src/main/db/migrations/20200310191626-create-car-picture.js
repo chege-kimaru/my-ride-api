@@ -1,35 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
-      account_id: {
+    return queryInterface.createTable('car_pictures', {
+      id: {
         allowNull: false,
         primaryKey: true,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
+      },
+      car_id: {
+        allowNull: false,
         type: Sequelize.UUID,
         onDelete: 'RESTRICT',
         onUpdate: 'RESTRICT',
         references: {
-          model: 'accounts',
+          model: 'cars',
           key: 'id'
         }
       },
-      name: {
+      picture: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull:false
       },
-      country: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      city: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      id_number: {
+      part: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -44,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('car_pictures');
   }
 };

@@ -1,37 +1,36 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
-      account_id: {
+    return queryInterface.createTable('car_features', {
+      car_id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
         onDelete: 'RESTRICT',
         onUpdate: 'RESTRICT',
         references: {
-          model: 'accounts',
+          model: 'cars',
           key: 'id'
         }
       },
-      name: {
+      fuel_type: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      country: {
+      interior_type: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      city: {
+      colour: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: false
+      engine: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
-      id_number: {
-        type: Sequelize.STRING,
-        allowNull: false
+      description: {
+        type: Sequelize.TEXT
       },
       created_at: {
         allowNull: false,
@@ -44,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('car_features');
   }
 };

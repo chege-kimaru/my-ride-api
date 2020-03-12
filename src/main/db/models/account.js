@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     Account.associate = function (models) {
         // associations can be defined here
+        Account.hasOne(models.User, {
+            foreignKey: 'account_id'
+        })
     };
     return Account;
 };

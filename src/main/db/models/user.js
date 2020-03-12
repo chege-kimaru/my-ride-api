@@ -1,27 +1,48 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    id: {
+    account_id: {
       allowNull: false,
       primaryKey: true,
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4
+      onDelete: 'RESTRICT',
+      onUpdate: 'RESTRICT',
+      references: {
+        model: 'accounts',
+        key: 'id'
+      }
     },
-    email: {
+    name: {
       type: DataTypes.STRING,
-      unique: true,
-      allowNull:false
+      allowNull: false
     },
-    role: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 1
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    id_number: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
   }, {
     underscored: true,
   });
   User.associate = function(models) {
     // associations can be defined here
+    User.belongsTo(models.Account, {
+      foreignKey: 'account_id'
+    });
+    User.hasMany(models.Car, {
+      foreignKey: 'user_id'
+    });
   };
   return User;
 };
