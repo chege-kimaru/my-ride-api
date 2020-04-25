@@ -102,6 +102,14 @@ export default class CarController {
         }
     }
 
+    static async getUserCars(req, res) {
+        try {
+            Send.success(res, 200, await CarService.getCars(req.user.id));
+        } catch (err) {
+            Send.error(res, err);
+        }
+    }
+
     static async getCarDetails(req, res) {
         try {
             Send.success(res, 200, await CarService.getCarDetails(req.car.id));

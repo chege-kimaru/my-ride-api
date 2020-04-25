@@ -12,8 +12,11 @@ import cloudinary from 'cloudinary';
 const logger = new Logger().logger();
 
 export default class CarService {
-    static async getCars() {
+    static async getCars(userId) {
+        let where = {};
+        userId ? where = {user_id: userId} : where = {};
         return Car.findAll({
+            where,
             include: [
                 {
                     model: CarDetail,

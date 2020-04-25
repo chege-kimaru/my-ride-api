@@ -1,4 +1,4 @@
-import {sequelize, Account} from '../db/models';
+import {sequelize, Account, User} from '../db/models';
 import {Op} from 'sequelize';
 import {
     ResourceNotFoundError,
@@ -17,7 +17,9 @@ const logger = new Logger().logger();
 
 export default class AuthService {
     static findByPk(id) {
-        return Account.findByPk(id);
+        return Account.findByPk(id, {
+            include: {model: User, required: false}
+        });
     };
 
     static async createUserGoogle(data) {

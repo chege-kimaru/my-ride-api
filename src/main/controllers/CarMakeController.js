@@ -2,7 +2,7 @@ import CarMakeService from '../services/CarMakeService';
 import Send from '../utils/Send';
 import ReqValidator from '../utils/validator';
 
-export default class CarController {
+export default class CarMakeController {
 
     static async createMake(req, res) {
         try {
